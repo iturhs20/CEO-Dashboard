@@ -168,7 +168,7 @@ const OEEBarGraph = ({ filteredData }) => {
       
       return (
         <div className="bg-white/90 backdrop-blur-md rounded-lg shadow-lg p-4 border border-gray-200">
-          <p className="font-medium">{payload[0].payload.period}</p>
+          <p className="font-medium text-black">{payload[0].payload.period}</p>
           <p className={`text-lg font-bold ${textColor}`}>{`OEE: ${value}%`}</p>
           <p className="text-sm text-gray-600">{performanceLevel}</p>
         </div>

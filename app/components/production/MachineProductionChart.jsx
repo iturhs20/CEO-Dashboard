@@ -83,7 +83,9 @@ const MachineProductionChart = ({ filteredData }) => {
                   <YAxis dataKey="name" type="category" />
                   <Tooltip
                     formatter={(value) => [`${value} units`, 'Total Production']}
-                    labelFormatter={(label) => `Machine: ${label}`}
+                    labelFormatter={(label) => {
+                      return <span className="text-black">{`Machine: ${label}`}</span>;
+                    }}
                   />
                   <Legend />
                   <Bar dataKey="production" name="Total Production" fill="#4ade80" />
@@ -133,7 +135,9 @@ const MachineProductionChart = ({ filteredData }) => {
                   <YAxis dataKey="name" type="category" />
                   <Tooltip
                     formatter={(value) => [`${value} units`, 'Total Production']}
-                    labelFormatter={(label) => `Machine: ${label}`}
+                    labelFormatter={(label) => {
+                      return <span className="text-black">{`Machine: ${label}`}</span>;
+                    }}
                   />
                   <Legend />
                   <Bar dataKey="production" name="Total Production" fill="#f87171" />

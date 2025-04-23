@@ -83,7 +83,7 @@ const MachinePerformanceChart = ({ filteredData }) => {
       
       return (
         <div className="bg-white/90 backdrop-blur-md rounded-lg shadow-lg p-4 border border-gray-200">
-          <p className="font-medium">Machine ID: {data.machineID}</p>
+          <p className="font-medium text-black">Machine ID: {data.machineID}</p>
           <p className={`text-lg font-bold ${textColor}`}>{`OEE: ${data.averageOEE}%`}</p>
           <p className="text-sm text-gray-600">Based on {data.dataCount} data points</p>
         </div>

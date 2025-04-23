@@ -127,7 +127,7 @@ const MachineDowntimeChart = ({ filteredData }) => {
                   if (name === 'avgDowntime') return [`${value} minutes`, 'Avg. Downtime per Occurrence'];
                   return [`${value} minutes`, 'Total Downtime'];
                 }}
-                labelFormatter={(label) => `Machine: ${label}`}
+                labelFormatter={(label) => <span className="text-black">{`Machine: ${label}`}</span>}
               />
               <Legend verticalAlign="top" height={36} />
               <Bar 

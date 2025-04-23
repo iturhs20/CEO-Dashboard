@@ -116,7 +116,9 @@ const ProductionCharts = ({ filteredData }) => {
                 <YAxis />
                 <Tooltip
                   formatter={(value) => [`${value} units`, 'Total Production']}
-                  labelFormatter={(label) => `Month: ${label}`}
+                  labelFormatter={(label) => {
+                    return <span className="text-black">{`Month: ${label}`}</span>;
+                  }}
                 />
                 <Legend />
                 <Bar dataKey="production" name="Total Production" fill="#3b82f6" />
@@ -140,7 +142,9 @@ const ProductionCharts = ({ filteredData }) => {
                 <YAxis />
                 <Tooltip
                   formatter={(value) => [`${value} units`, 'Total Production']}
-                  labelFormatter={(label) => `Date: ${label}`}
+                  labelFormatter={(label) => {
+                    return <span className="text-black">{`Date: ${label}`}</span>;
+                  }}
                 />
                 <Legend />
                 <Bar dataKey="production" name="Total Production" fill="#10b981" />

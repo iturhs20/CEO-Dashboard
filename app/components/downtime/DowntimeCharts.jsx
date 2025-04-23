@@ -145,7 +145,9 @@ const DowntimeCharts = ({ filteredData }) => {
                   />
                   <Tooltip 
                     formatter={(value) => [`${value} minutes`, 'Downtime']}
-                    labelFormatter={(label) => `Month: ${label}`}
+                    labelFormatter={(label) => {
+                      return <span className="text-black">{`Month: ${label}`}</span>;
+                    }}
                   />
                   <Legend verticalAlign="top" height={36} />
                   <Bar 
@@ -189,7 +191,9 @@ const DowntimeCharts = ({ filteredData }) => {
                   />
                   <Tooltip 
                     formatter={(value) => [`${value} minutes`, 'Downtime']}
-                    labelFormatter={(label) => `Date: ${label}`}
+                    labelFormatter={(label) =>  {
+                      return <span className="text-black">{`Date: ${label}`}</span>;
+                    }}
                   />
                   <Legend verticalAlign="top" height={36} />
                   <Bar 
