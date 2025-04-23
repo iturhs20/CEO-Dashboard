@@ -114,7 +114,7 @@ const DashboardHome = () => {
               icon={<Clock size={30} className="text-white" />} 
               color="border-red-500"
               iconColor="bg-gradient-to-br from-red-500 to-pink-600" 
-              route="/dashboard/downtime"
+              route="/Downtime"
               trend={{isUp: false, value: "15%"}}
               subtitle="Click for detailed view"
               bgGradient="linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(219, 39, 119, 0.2) 100%)"
