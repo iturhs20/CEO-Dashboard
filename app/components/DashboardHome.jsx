@@ -125,7 +125,7 @@ const DashboardHome = () => {
               icon={<BarChart2 size={30} className="text-white" />} 
               color="border-green-500" 
               iconColor="bg-gradient-to-br from-emerald-500 to-green-600"
-              route="/dashboard/production"
+              route="/Production"
               trend={{isUp: true, value: "8.3%"}}
               subtitle="Click for detailed view"
               bgGradient="linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%)"
