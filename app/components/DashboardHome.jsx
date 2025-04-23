@@ -131,7 +131,7 @@ const DashboardHome = () => {
               bgGradient="linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%)"
             />
             
-            <DashboardCard 
+            {/* <DashboardCard 
               title="Energy Usage"
               icon={<Zap size={30} className="text-white" />} 
               color="border-amber-500" 
@@ -140,7 +140,7 @@ const DashboardHome = () => {
               trend={{isUp: false, value: "3.8%"}}
               subtitle="Click for detailed view"
               bgGradient="linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(234, 88, 12, 0.2) 100%)"
-            />
+            /> */}
           </div>
         </div>
       </div>
