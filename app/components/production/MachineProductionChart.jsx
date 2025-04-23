@@ -107,9 +107,9 @@ const MachineProductionChart = ({ filteredData }) => {
               <tbody>
                 {machineProductionData.topMachines.map((machine) => (
                   <tr key={machine.id}>
-                    <td className="py-1">{machine.id}</td>
-                    <td className="py-1">{machine.type}</td>
-                    <td className="py-1 text-right">{machine.production.toLocaleString()} units</td>
+                    <td className="py-1 text-black">{machine.id}</td>
+                    <td className="py-1 text-black">{machine.type}</td>
+                    <td className="py-1 text-right text-black">{machine.production.toLocaleString()} units</td>
                   </tr>
                 ))}
               </tbody>
@@ -142,7 +142,7 @@ const MachineProductionChart = ({ filteredData }) => {
             </div>
           ) : (
             <div className="h-72 flex items-center justify-center">
-              <p className="text-gray-500">No machine data available</p>
+              <p className="text-black">No machine data available</p>
             </div>
           )}
           <div className="mt-4">
@@ -157,9 +157,9 @@ const MachineProductionChart = ({ filteredData }) => {
               <tbody>
                 {machineProductionData.bottomMachines.map((machine) => (
                   <tr key={machine.id}>
-                    <td className="py-1">{machine.id}</td>
-                    <td className="py-1">{machine.type}</td>
-                    <td className="py-1 text-right">{machine.production.toLocaleString()} units</td>
+                    <td className="py-1 text-black">{machine.id}</td>
+                    <td className="py-1 text-black">{machine.type}</td>
+                    <td className="py-1 text-right text-black">{machine.production.toLocaleString()} units</td>
                   </tr>
                 ))}
               </tbody>

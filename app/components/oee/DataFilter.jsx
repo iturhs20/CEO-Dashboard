@@ -275,12 +275,12 @@ function DataFilter() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
               <div className="relative">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Plant ID</label>
+                <label className="block text-sm font-medium text-black mb-1">Plant ID</label>
                 <select 
                   name="plantID" 
                   onChange={handleFilterChange} 
                   value={filters.plantID}
-                  className="block w-full bg-gray-50 border border-gray-300 rounded-lg py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
+                  className="block w-full bg-gray-50 border text-black border-gray-300 rounded-lg py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
                   disabled={loading}
                 >
                   <option value="">All Plant IDs</option>
@@ -290,7 +290,7 @@ function DataFilter() {
                 </select>
               </div>
 
-              <div className="relative">
+              {/* <div className="relative">
                 <label className="block text-sm font-medium text-gray-700 mb-1">Plant Name</label>
                 <select 
                   name="plantName" 
@@ -304,15 +304,15 @@ function DataFilter() {
                     <option key={index} value={plantName}>{plantName}</option>
                   ))}
                 </select>
-              </div>
+              </div> */}
 
               <div className="relative">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Product Line</label>
+                <label className="block text-sm font-medium text-black mb-1">Product Line</label>
                 <select 
                   name="productLine" 
                   onChange={handleFilterChange} 
                   value={filters.productLine}
-                  className="block w-full bg-gray-50 border border-gray-300 rounded-lg py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
+                  className="block w-full bg-gray-50 border text-black border-gray-300 rounded-lg py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
                   disabled={loading}
                 >
                   <option value="">All Product Lines</option>
@@ -323,12 +323,12 @@ function DataFilter() {
               </div>
 
               <div className="relative">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Shift</label>
+                <label className="block text-sm font-medium text-black mb-1">Shift</label>
                 <select 
                   name="shift" 
                   onChange={handleFilterChange} 
                   value={filters.shift}
-                  className="block w-full bg-gray-50 border border-gray-300 rounded-lg py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
+                  className="block w-full bg-gray-50 border text-black border-gray-300 rounded-lg py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
                   disabled={loading}
                 >
                   <option value="">All Shifts</option>
@@ -339,12 +339,12 @@ function DataFilter() {
               </div>
 
               <div className="relative">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Month</label>
+                <label className="block text-sm font-medium text-black mb-1">Month</label>
                 <select 
                   name="month" 
                   onChange={handleFilterChange} 
                   value={filters.month}
-                  className="block w-full bg-gray-50 border border-gray-300 rounded-lg py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
+                  className="block w-full bg-gray-50 border text-black border-gray-300 rounded-lg py-2 px-3 focus:ring-blue-500 focus:border-blue-500"
                   disabled={loading}
                 >
                   <option value="">All Months</option>
