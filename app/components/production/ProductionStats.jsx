@@ -1,49 +1,117 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { TrendingUp, ArrowDown, ArrowUp } from 'lucide-react';
 
 const ProductionStats = ({ filteredData }) => {
-  // Calculate production statistics from filtered data
+  // First, let's deeply debug the data
+  useEffect(() => {
+    console.log("===== DEBUG PRODUCTION STATS =====");
+    console.log("Filtered data length:", filteredData?.length);
+    console.log("First few items:", filteredData?.slice(0, 3));
+    
+    // Specifically check for any items with -100 or values near -100
+    const suspiciousItems = filteredData?.filter(item => {
+      const val = parseFloat(item.Production_Units);
+      return !isNaN(val) && (val < -90 && val > -110);
+    });
+    
+    if (suspiciousItems?.length > 0) {
+      console.log("FOUND SUSPICIOUS ITEMS NEAR -100:", suspiciousItems);
+    }
+    
+    // Analyze all Production_Units values
+    if (filteredData?.length > 0) {
+      const allValues = filteredData
+        .map(item => {
+          if (item.Production_Units === undefined) return "undefined";
+          if (item.Production_Units === null) return "null";
+          return item.Production_Units;
+        });
+      
+      console.log("All Production_Units raw values:", allValues.slice(0, 20));
+    }
+  }, [filteredData]);
+  
+  // Calculate production statistics from filtered data - with a completely different approach
   const productionStats = useMemo(() => {
+    // Default stats
+    const defaultStats = {
+      average: 0,
+      minimum: 0,
+      maximum: 0
+    };
+    
     // Check if data is valid
     if (!filteredData || filteredData.length === 0) {
-      return {
-        average: 0,
-        minimum: 0,
-        maximum: 0
-      };
+      return defaultStats;
     }
-
-    // Extract and process production values
-    const productionValues = filteredData
-      .map(item => {
-        const production = parseFloat(item.Production_Units);
-        return isNaN(production) ? null : production;
-      })
-      .filter(value => value !== null);
-
-    // Handle case with no valid production values
-    if (productionValues.length === 0) {
-      return {
-        average: 0,
-        minimum: 0,
-        maximum: 0
-      };
+    
+    try {
+      let sum = 0;
+      let count = 0;
+      let min = Number.MAX_VALUE; 
+      let max = Number.MIN_VALUE;
+      let hasValidValues = false;
+      
+      // Process each item manually without array methods
+      for (let i = 0; i < filteredData.length; i++) {
+        const item = filteredData[i];
+        
+        // Only process if the property exists
+        if (item && 'Production_Units' in item) {
+          const valStr = String(item.Production_Units).trim();
+          const val = parseFloat(valStr);
+          
+          // Only include valid numbers
+          if (!isNaN(val)) {
+            sum += val;
+            count++;
+            hasValidValues = true;
+            
+            // Track min/max
+            if (val < min) min = val;
+            if (val > max) max = val;
+            
+            // Debug: If we find a value equal to -100, log it
+            if (Math.abs(val + 100) < 0.01) {
+              console.error("FOUND -100 VALUE:", item);
+            }
+          }
+        }
+      }
+      
+      // If we found valid values, return the stats
+      if (hasValidValues) {
+        const avg = count > 0 ? sum / count : 0;
+        
+        // Apply special case: If min is still MAX_VALUE, no valid values were found
+        if (min === Number.MAX_VALUE) min = 0;
+        if (max === Number.MIN_VALUE) max = 0;
+        
+        console.log("Final calculated stats:", { 
+          average: avg, 
+          minimum: min, 
+          maximum: max,
+          validCount: count
+        });
+        
+        // Force minimum to be at least 0 - this is a safeguard
+        const safeMin = Math.max(0, min);
+        
+        return {
+          average: parseFloat(avg.toFixed(2)),
+          minimum: parseFloat(safeMin.toFixed(2)),
+          maximum: parseFloat(max.toFixed(2))
+        };
+      }
+      
+      return defaultStats;
+    } catch (error) {
+      console.error("Error in production stats calculation:", error);
+      return defaultStats;
     }
-
-    // Calculate statistics
-    const sum = productionValues.reduce((acc, val) => acc + val, 0);
-    const average = sum / productionValues.length;
-    const minimum = Math.min(...productionValues);
-    const maximum = Math.max(...productionValues);
-
-    return {
-      average: parseFloat(average.toFixed(2)),
-      minimum: parseFloat(minimum.toFixed(2)),
-      maximum: parseFloat(maximum.toFixed(2))
-    };
   }, [filteredData]);
 
-  // Function to get appropriate color class based on production value and target
+  // Function to get appropriate color class based on production value and type
   const getColorClass = (value, type) => {
     if (type === 'average') {
       return 'bg-blue-100 text-blue-800';
