@@ -144,7 +144,7 @@ const OEEBarGraph = ({ filteredData }) => {
   // Set color based on OEE value
   const getBarColor = (value) => {
     if (value < 65) return '#ef4444'; // Red for low OEE
-    if (value < 85) return '#f59e0b'; // Amber for medium OEE
+    if (value < 80) return '#f59e0b'; // Amber for medium OEE
     return '#10b981'; // Green for high OEE
   };
 
@@ -158,7 +158,7 @@ const OEEBarGraph = ({ filteredData }) => {
       if (value < 65) {
         performanceLevel = 'Below Target';
         textColor = 'text-red-600';
-      } else if (value < 85) {
+      } else if (value < 80) {
         performanceLevel = 'Acceptable';
         textColor = 'text-amber-600';
       } else {
@@ -223,11 +223,11 @@ const OEEBarGraph = ({ filteredData }) => {
           </div>
           <div className="flex items-center">
             <div className="w-3 h-3 rounded-full bg-amber-500 mr-2"></div>
-            <span className="text-sm text-gray-600">Acceptable (65-85%)</span>
+            <span className="text-sm text-gray-600">Acceptable (65-80%)</span>
           </div>
           <div className="flex items-center">
             <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-            <span className="text-sm text-gray-600">Excellent (&gt;85%)</span>
+            <span className="text-sm text-gray-600">Excellent (&gt;80%)</span>
           </div>
         </div>
       </div>
